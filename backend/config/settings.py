@@ -43,7 +43,7 @@ PROJECT_APPS = [
 THIRD_PARTY_APPS = [
     'rest_framework',
     'corsheaders',
-    'django_crontab'
+    'django_crontab',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
@@ -169,4 +169,6 @@ CORS_ALLOW_HEADERS = (
 APPEND_SLASH = False
 
 # CRON Batch Task
-CRON
+CRONJOBS = [
+    ('0 0 0 1,6 * *', 'utils.cron.get_project_infos', '>> '+os.path.join(BASE_DIR, 'backend/log/cron.log')),
+]
