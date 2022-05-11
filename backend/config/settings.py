@@ -1,7 +1,7 @@
-from pathlib import Path
-import pymysql
 import os
 import dotenv
+import pymysql
+from pathlib import Path
 
 
 # AttributeError: 'NoneType' object has no attribute 'startswith'
@@ -170,5 +170,5 @@ APPEND_SLASH = False
 
 # CRON Batch Task
 CRONJOBS = [
-    ('0 0 0 1,6 * *', 'utils.cron.get_project_infos', '>> '+os.path.join(BASE_DIR, 'backend/log/cron.log')),
+    ('0 0 20 1,6 * *', 'utils.cron.get_project_infos', '>> '+os.path.join(BASE_DIR, 'backend/log/cron.log')+' 2>&1 '),
 ]

@@ -1,17 +1,18 @@
 import os
 import json
-from urllib.request import Request, urlopen
 import django
+from urllib.request import Request, urlopen
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.config.settings")
 django.setup()
+
+from utils.uploader import insert_data
 
 
 def get_project_infos():
     apis = OpendataPortalAPIController()
     apis.set_url(apis.PERPAGE)
-    # print(list(map(lambda x: x.get('연구종류'), data)))
-    return apis.get_json_data().get('data')
+    insert_data(apis.get_json_data().get('data'))
 
 
 class OpendataPortalAPIController:
@@ -39,3 +40,7 @@ class OpendataPortalAPIController:
         req = Request(self.URL)
         body = urlopen(req, timeout=60).read()
         return json.loads(body)
+
+
+if __name__=='__main__':
+    get_project_infos()
