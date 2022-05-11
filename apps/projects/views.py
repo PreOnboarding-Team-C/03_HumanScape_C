@@ -7,9 +7,10 @@ import os
 from rest_framework import generics
 from .models import Project
 from .serializers import ProjectSerializer
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
 
 class TestAPIView(APIView):
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
     def get(self, request):
         TEST_FILE_PATH = os.path.join(BASE_DIR, 'test_response.json')
 
@@ -20,6 +21,7 @@ class TestAPIView(APIView):
         insert_data(test_data['data'])
         return Response(test_data)
 
+    
 class ProjectListAPIView(generics.ListAPIView):
     '''
     Assignee : 홍은비
@@ -28,6 +30,7 @@ class ProjectListAPIView(generics.ListAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
 
+    
 class ProjectDetailAPIView(generics.RetrieveAPIView):
     '''
     Assignee : 홍은비
@@ -36,3 +39,4 @@ class ProjectDetailAPIView(generics.RetrieveAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
     lookup_field = 'number'
+    
