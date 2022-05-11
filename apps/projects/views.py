@@ -4,7 +4,9 @@ from pathlib import Path
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import os
-
+from rest_framework import generics
+from .models import Project
+from .serializers import ProjectSerializer
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 class TestAPIView(APIView):
@@ -15,7 +17,22 @@ class TestAPIView(APIView):
             json_data = json.load(f)
             test_data = json_data
         f.close()
-        # print(test_data['data'])
         insert_data(test_data['data'])
-        # print(test_data['data'][0]['과제명'])
         return Response(test_data)
+
+class ProjectListAPIView(generics.ListAPIView):
+    '''
+    Assignee : 홍은비
+    Reviewer : -
+    '''
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+
+class ProjectDetailAPIView(generics.RetrieveAPIView):
+    '''
+    Assignee : 홍은비
+    Reviewer : -
+    '''
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+    lookup_field = 'number'
