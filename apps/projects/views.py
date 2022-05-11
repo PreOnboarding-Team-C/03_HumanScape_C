@@ -2,10 +2,12 @@ import datetime
 import os
 import json
 from pathlib import Path
+from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.db.models import F
 
+from .models import Project
 from apps.projects.models import Project
 from utils.uploader import insert_data
 from .serializer import ProjectSerializer
@@ -41,3 +43,22 @@ class CheckUpdatedDataAPIView(APIView):
         projects_queryset = Project.objects.filter(created_datetime=F('updated_datetime'), updated_datetime__gte=diff_datetime)        
         serializer = ProjectSerializer(projects_queryset, many=True)
         return Response(serializer.data, status=200)
+
+    
+class ProjectListAPIView(generics.ListAPIView):
+    '''
+    Assignee : 홍은비
+    Reviewer : -
+    '''
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+
+    
+class ProjectDetailAPIView(generics.RetrieveAPIView):
+    '''
+    Assignee : 홍은비
+    Reviewer : -
+    '''
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+    lookup_field = 'number'
