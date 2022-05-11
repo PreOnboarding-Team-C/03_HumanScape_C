@@ -5,7 +5,7 @@ from utils.time_stamp import TimeStampModel
 
 class Project(TimeStampModel):
     number = models.CharField(max_length=20, primary_key=True, verbose_name='과제번호')
-    title = models.CharField(max_length=200, verbose_name='과제명')
+    title = models.TextField(verbose_name='과제명')
     research_period = models.PositiveSmallIntegerField(verbose_name='연구기간')
     research_scope = models.CharField(max_length=30, verbose_name='연구범위')
     research_case = models.CharField(max_length=30, verbose_name='연구종류')
