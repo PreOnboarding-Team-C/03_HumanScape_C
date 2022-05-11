@@ -27,18 +27,26 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
-INSTALLED_APPS = [
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'corsheaders',
+]
+
+PROJECT_APPS = [
     'apps.projects',
 ]
+
+THIRD_PARTY_APPS = [
+    'rest_framework',
+    'corsheaders',
+    'django_crontab',
+]
+
+INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -159,3 +167,8 @@ CORS_ALLOW_HEADERS = (
 
 # '/' 관련 에러 제거
 APPEND_SLASH = False
+
+# CRON Batch Task
+CRONJOBS = [
+    ('0 0 0 1,6 * *', 'utils.cron.get_project_infos', '>> '+os.path.join(BASE_DIR, 'backend/log/cron.log')),
+]
