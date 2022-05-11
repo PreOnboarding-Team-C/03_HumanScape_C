@@ -11,7 +11,7 @@ class Project(TimeStampModel):
     research_case = models.CharField(max_length=30, verbose_name='연구종류')
     research_responsible_institution = models.CharField(max_length=30, verbose_name='연구책임기관')
     research_phase = models.CharField(max_length=30, verbose_name='임상시험단계(연구모형)')
-    total_subject_count = models.PositiveSmallIntegerField(verbose_name='전체목표연구대상자수')
+    total_subject_count = models.PositiveIntegerField(verbose_name='전체목표연구대상자수')
     speciality = models.CharField(max_length=30, verbose_name='진료과')
 
     class Meta:
