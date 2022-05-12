@@ -2,6 +2,10 @@ from datetime import datetime
 from apps.projects.models import Project
 
 def insert_data(data):
+    """
+    Assignee : 홍은비
+    Reviewer : 장우경
+    """
     col = ['number', 'title', 'research_period', 'research_scope', 'research_case', \
         'research_responsible_institution', 'research_phase', 'total_subject_count',\
         'speciality']
