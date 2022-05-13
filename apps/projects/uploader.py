@@ -1,4 +1,4 @@
-from datetime import datetime
+from django.utils import timezone
 from apps.projects.models import Project
 
 
@@ -52,7 +52,7 @@ def insert_data(data):
         else:
             if project != _project: # 변경된 데이터라면 update
                 del project['number']
-                Project.objects.filter(number=rows['과제번호']).update(**project, updated_datetime=datetime.now())
+                Project.objects.filter(number=rows['과제번호']).update(**project, updated_datetime=timezone.now().replace(microsecond=0))
                 update_count+=1
 
     print(f"{'='*25} Project DATA UPLOADED SUCCESSFULLY {'='*25}")
