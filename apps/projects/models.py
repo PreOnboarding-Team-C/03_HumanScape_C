@@ -4,6 +4,10 @@ from utils.time_stamp import TimeStampModel
 
 
 class Project(TimeStampModel):
+    '''
+    Assignee : 장우경, 홍은비
+    Reviewer : 홍은비, 장우경
+    '''
     number = models.CharField(max_length=20, primary_key=True, verbose_name='과제번호')
     title = models.TextField(verbose_name='과제명')
     research_period = models.PositiveSmallIntegerField(verbose_name='연구기간')
