@@ -6,7 +6,7 @@ from urllib.request import Request, urlopen
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.config.settings")
 django.setup()
 
-from utils.uploader import insert_data
+from apps.projects.uploader import insert_data
 
 
 def get_project_infos():

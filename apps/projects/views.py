@@ -6,11 +6,9 @@ from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.db.models import F, Q
-from django.db.models.functions import Substr
 
 from .models import Project
-from apps.projects.models import Project
-from utils.uploader import insert_data
+from .uploader import insert_data
 from .serializer import ProjectSerializer
 
 
