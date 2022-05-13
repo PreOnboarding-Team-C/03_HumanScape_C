@@ -34,14 +34,15 @@ MYSQL_PORT=$PORT_NO
 
 </br>
 
-### API
-<span color="lightgray">문제 정의 이후, API 명세가 작성될 부분.</span>
-<div align="center">
+### API Documentation
+![Python](https://img.shields.io/badge/Postman-%20orange.svg?&style=flat&logo=Postman&logoColor=red&labelColor=3950d&cacheSeconds=3600$logoWidth=60)
 
-| Method | Request | URL | Response |
-|--------|---------|-----|----------|
-|  |  |  |  |
-</div>
+![img](./src/images/api_1.png "api 문서화 캡쳐본")
+![img](./src/images/api_2.png "api 문서화 캡쳐본")
+![img](./src/images/api_3.png "api 문서화 캡쳐본")
+
+🌐[API Documentation Link](https://documenter.getpostman.com/view/12508509/Uyxhn7cA)
+
 </br>
 
 ### Comments
