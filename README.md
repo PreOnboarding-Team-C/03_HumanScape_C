@@ -74,15 +74,25 @@ MYSQL_PORT=$PORT_NO
 
 </br>
 
+## 배포 가이드 및 주소 제공
+[AWS EC2 적용](https://thundering-beef-7b9.notion.site/AWS-EC2-eac664ca95b644189ddea03886b2b91c)
+
+[AWS 배포 및 tmux 활용하여 서버 실행](https://utopian-thistle-f43.notion.site/day13-05-13-AWS-tmux-4a0c1b52b79343f2b45963e94ae6a125)
+
 ## Comments
-<span color="lightgray">금번 프로젝트를 진행하며 겪은 내용과 구현 방법 및 도입 이유 등을 각자가 정리할 예정.</span>
 
 ## 장우경
-
 ### 최근 일주일내에 업데이트(변경사항이 있는) 된 임상정보 리스트 API
-1. 데이터 처음 저장시 TimeStampModel를  created_datetime과 updated_datetime
+아래의 로직을 먼저 생각한 후에 코드 작업을 진행했습니다.
+1. 데이터 처음 저장시 created_datetime(생성일)과 updated_datetime(수정일)은 같을 것이다.
+2. 만약 다르다면 생성된 후에 업데이트 되었을 것이다.
+3. 그리고 조회하는 시점 기준으로 수정일이 일주일 이내이면 찾던 조건에 부합한다.
 
 ### 어려워던 점
+*생성일과 수정일 관련하여 DateTimeField의 코드 override 적용하던 부분  
+데이터 최초 저장시 생성일과 수정일이 0.0003초정도의 차이가 있어서 이를 해결해야 했습니다.  
+DateTimeField의 데이터가 생성되거나 수정되는 부분들을 찾아가며 print를 찍어보며 데이터가 업데이트 되는 시간과 연관된 코드가 어떤 것인지 찾고자 했습니다.  
+pre_save 메소드에서 value 값을 print 했을 때 밀리세컨 정도로 업데이트 값과 차이가 나서 다른 부분을 계속 찾아봤었는데 멘토님께서 그 부분의 밀리세컨 값을 0으로 하는게 어떻냐는 조언을 해주셔서 replace 함수 적용하여 "microsecond 값을 0"으로 변경시켜 위의 로직을 구현할 수 있었습니다.
 
 </br>
 

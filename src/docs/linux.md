@@ -5,15 +5,15 @@
 ### Local 개발 및 테스트용
 1. 해당 프로젝트를 clone 하고, 프로젝트 폴더로 들어간다.
 ```bash
-	git clone https://github.com/PreOnboarding-Team-C/Humanscape.git
+    git clone https://github.com/PreOnboarding-Team-C/Humanscape.git
 ```
 ```bash
-	cd Humanscape
+    cd Humanscape
 ```
 
 2. Python version 체크 및 업그레이드
 ```bash
-	python3 --version
+    python3 --version
     # 3.10 아닐 경우 아래의 방법으로 업그레이드
     sudo apt install software-properties-common -y
     sudo add-apt-repository ppa:deadsnakes/ppa -y
@@ -38,13 +38,13 @@
 4. Python 패키지 설치
 ```bash
     # 해당 프로젝트 루트 디렉토리에서 실행
-	pip install -r requirements.txt
+    pip install -r requirements.txt
 ```
 
 5. DB 생성
 ```bash
-	mysql -u root -p
-	# 위의 명령어 입력 후 비번 입력하여 접속
+    mysql -u root -p
+    # 위의 명령어 입력 후 비번 입력하여 접속
     # DB 생성
     CREATE DATABASE 데이터베이스명;
 ```
@@ -52,11 +52,11 @@
 5. DB 생성 후 루트 디렉토리에 .env 생성하여 DB 정보 입력하여 연결한다.  
 그 후 model의 변경사항을 DB에 반영한다.
 ```bash
-	python manage.py makemigrations
-	python manage.py migrate
+    python manage.py makemigrations
+    python manage.py migrate
 ```
 
 6. 서버를 실행한다.
 ```bash
-	python manage.py runserver 0.0.0.0:8000
+    python manage.py runserver 0.0.0.0:8000
 ```
